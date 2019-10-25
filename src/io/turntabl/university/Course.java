@@ -5,9 +5,9 @@ import java.util.List;
 public class Course {
     private Lecturer lecturer;
     private List<Student> students;
-    private Year courseYear;
+    private List<Year> courseYear;
 
-    public Course(Lecturer lecturer, List<Student> students, Year courseYear) {
+    public Course(Lecturer lecturer, List<Student> students, List<Year> courseYear) {
         this.lecturer = lecturer;
         this.students = students;
         this.courseYear = courseYear;
@@ -29,11 +29,11 @@ public class Course {
         this.students = students;
     }
 
-    public Year getCourseYear() {
+    public List<Year> getCourseYear() {
         return courseYear;
     }
 
-    public void setCourseYear(Year courseYear) {
+    public void setCourseYear(List<Year> courseYear) {
         this.courseYear = courseYear;
     }
 }
