@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -23,23 +24,31 @@ public class Main {
                new Student("Evans", "PS193", Year.FIRST)
                );
 
-       List<Student> firstYearStudents = new ArrayList<>();
+       //students.stream().filter(s->s.getStdYear()==Year.FOURTH).forEach(System.out::println);
+
+
+       /*List<Student> firstYearStudents = new ArrayList<>();
         for (Student student: students ) {
             if (student.getStdYear() == Year.FIRST) {
                 firstYearStudents.add(student);
             }
         }
+    */
+        List<Student> firstYearStudents = students.stream().filter(student -> student.getStdYear() == Year.FIRST).collect(Collectors.toList());
 
         Lecturer lect1 = new Lecturer("Prof. Sam", Courses.PROGRAMMING);
 
         Course introToProgramming = new Course(lect1, firstYearStudents, Arrays.asList(Year.FIRST));
 
-        List<Student> thirdAndfourthYearStds = new ArrayList<>();
+       /* List<Student> thirdAndfourthYearStds = new ArrayList<>();
         for (Student student: students) {
             if (student.getStdYear() == Year.THIRD || student.getStdYear() == Year.FOURTH){
                 thirdAndfourthYearStds.add(student);
             }
         }
+
+        */
+        List<Student> thirdAndfourthYearStds = students.stream().filter(student -> student.getStdYear() == Year.THIRD || student.getStdYear() == Year.FOURTH).collect(Collectors.toList());
 
         Lecturer lect2 = new Lecturer("Dr. Lateef", Courses.GARDENING);
 
@@ -48,14 +57,15 @@ public class Main {
 
         Lecturer lect3 = new Lecturer("Mr Mensah", Courses.PHYSICS);
 
-        List<Student> vowelBeginFourth = new ArrayList<>();
+       /* List<Student> vowelBeginFourth = new ArrayList<>();
 
-        for (Student student : students ) {
+       for (Student student : students ) {
             if ( student.getStdName().startsWith("A") && student.getStdYear() == Year.FOURTH) {
                 vowelBeginFourth.add(student);
             }
         }
-
+        */
+        List<Student> vowelBeginFourth = students.stream().filter(student -> student.getStdName().startsWith("A")|| student.getStdYear() == Year.FOURTH).collect(Collectors.toList());
         printList(vowelBeginFourth);
 
         Course physics =  new Course(lect3, vowelBeginFourth, Arrays.asList(Year.FOURTH));
